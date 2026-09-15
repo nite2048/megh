@@ -3,7 +3,7 @@ name: Build and Deploy to GitHub Pages
 # Runs on the main branch
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
   workflow_dispatch:
 
 # Permissions
@@ -23,7 +23,7 @@ jobs:
       # Setup
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Pages
         uses: actions/configure-pages@v5
 
@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-          
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
