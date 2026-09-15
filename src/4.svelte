@@ -10,7 +10,7 @@
                HAPPIEST BIRTHDAY 🍰🍰🍰🍰🍰
           </h2>
 
-          <div class="hero retro-border" style="height: 70%; width: 80%;">
+          <div class="hero retro-border" style="height: 50svh; width: 40svh;">
                <img src={subject} alt="duck">
           </div>
 
