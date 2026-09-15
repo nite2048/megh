@@ -8,7 +8,7 @@ on:
 
 # Permissions
 permissions:
-  contents: write # Write permission needed for that stupid bugfix
+  contents: read
   pages: write
   id-token: write
 
@@ -28,13 +28,14 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '21'
+          node-version: '20'
+          cache: npm
 
       # Build
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --include=optional
 
       - name: Build
         run: npm run build
@@ -46,8 +47,7 @@ jobs:
         run: find ./ -type f -exec sed -i 's|/assets/|./|g' {} +
 
       - name: Fix references (Change "./index" to "./assets/index")
-        run : find ./ -type f -exec sed -i 's|./index|./assets/index|g' {} +
-
+        run: find ./ -type f -exec sed -i 's|./index|./assets/index|g' {} +
 
       # Upload the build files to GitHub Pages
       - name: Upload artifact
