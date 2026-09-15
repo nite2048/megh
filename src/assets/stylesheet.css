@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'VCR-JP';
+    src: url('VCR-JP.woff2') format('woff2'),
+        url('VCR-JP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RetroByte';
+    src: url('RetroByte.woff2') format('woff2'),
+        url('RetroByte.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Terminal Grotesque';
+    src: url('Terminal-Grotesque.woff2') format('woff2'),
+        url('Terminal-Grotesque.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,0 +1,60 @@
+name: Build and Deploy to GitHub Pages
+
+# Runs on the main branch
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+# Permissions
+permissions:
+  contents: write # Write permission needed for that stupid bugfix
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Pages
+        uses: actions/configure-pages@v5
+
+      - name: Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '21'
+
+      # Build
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Static file handling is broken in general for all files, for some reason.
+      # A fucking dot. (fix for the bug in the generated build files)
+      # Fix references to assets in the assets folder
+      - name: Fix static assets (Change "/asset/" to "./")
+        run: find ./ -type f -exec sed -i 's|/assets/|./|g' {} +
+
+      - name: Fix references (Change "./index" to "./assets/index")
+        run : find ./ -type f -exec sed -i 's|./index|./assets/index|g' {} +
+
+
+      # Upload the build files to GitHub Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'VCR-JP';
+    src: url('./assets/VCR-JP.woff2') format('woff2'),
+        url('./assets/VCR-JP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RetroByte';
+    src: url('./assets/RetroByte.woff2') format('woff2'),
+        url('./assets/RetroByte.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Terminal Grotesque';
+    src: url('./assets/Terminal-Grotesque.woff2') format('woff2'),
+        url('./assets/Terminal-Grotesque.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+:root{
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+body{
+     width: 100svw;
+     height: 100svh;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'VCR-JP';
+}
