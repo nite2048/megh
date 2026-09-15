@@ -13,9 +13,7 @@
   const stor = new URL('./assets/stor.png', import.meta.url).href;
   const wotor = new URL('./assets/wotor.png', import.meta.url).href;
 
-  /*
-   * GAME SETTINGS
-   */
+
 
   // Sprites are randomly sized between these values (rem).
   const SPRITE_MIN_SIZE = 14;
